@@ -1,0 +1,22 @@
+%aside.Sidebar#Sidebar
+  %section
+    %h3 Upcomming events
+    %p
+      #{Faker::Lorem.sentence}
+      %a{ :href=>'#' } Read More
+  
+  %section
+    %h3 Join our mailing list
+    %form
+      .field
+        %label
+          Email address
+          .inputs
+            %input{ :type=>:text }
+      %button{ :type=>:submit } Submit
+  
+  %section
+    %a{ :href=>"" } Download our current newsletter
+  
+  %section
+    %p Add space here

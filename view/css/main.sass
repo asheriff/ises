@@ -1,0 +1,322 @@
+//-------------------------------------------------------------------------
+// Dimensions
+//-------------------------------------------------------------------------
+$SITE_WIDTH: 900px
+$SIDEBAR_WIDTH: 260px
+$CONTENT_PADDING: 20px
+$CONTENT_OVERLAP: 70px
+
+//-------------------------------------------------------------------------
+// Colors & fonts
+//-------------------------------------------------------------------------
+$COLOR_MAIN: #BD8749
+$COLOR_SITE_BG: #F7F7F7
+
+$FONT: Helvetica, Arial, sans-serif
+$FONT_HEADINGS: "Arial Narrow", $FONT
+
+//-------------------------------------------------------------------------
+// Mixins
+//-------------------------------------------------------------------------
+=clearfix
+  :overflow hidden
+  :display inline-block
+  &
+    :display block
+
+// TODO: use compass lib for css3 features
+=border-radius($radius)
+  :-webkit-border-radius $radius
+  :-moz-border-radius $radius
+  :-o-border-radius $radius
+  :-ms-border-radius $radius
+  :-khtml-border-radius $radius
+  :border-radius $radius
+
+/*-------------------------------------------------------------------------
+/* General
+/*-------------------------------------------------------------------------
+*
+  :-moz-box-sizing border-box
+
+BODY
+  :margin 0
+  :background #A47740
+
+IMG
+  :border none
+
+HEADER, SECTION, FOOTER, ASIDE
+  :display block
+
+NAV
+  :display inline-block
+  :line-height 1.2em
+  UL
+    :list-style none
+    :margin 0
+    :padding 0
+    LI
+      :display inline-block
+      :*display inline
+      A
+        :display inline-block
+
+/*-------------------------------------------------------------------------
+/* Typography
+/*-------------------------------------------------------------------------
+BODY
+  :font 75%/1.2em $FONT
+  :color #444
+
+PRE, CODE, TT, KBD
+  :font-family 'Courier New' Courier monospace
+  :font-size 1.2em
+
+A
+  :color $COLOR_MAIN
+  &:HOVER
+    :color darken($COLOR_MAIN, 20%)
+
+P, UL, OL, DL, H1, H2, H3, H4, H5, H6, TABLE, BLOCKQUOTE
+  :margin 1.4em 0
+  
+H1, H2
+  :font-family $FONT_HEADINGS
+  :text-transform uppercase
+  :color $COLOR_MAIN
+H1
+  :font-size 2em
+H2
+  :font-size 1.6em
+H3
+  :font-size 1.5em
+  :color $COLOR_MAIN
+
+EM
+  :font-style normal
+
+HR
+  :height 1px
+  :border none
+  :border-bottom 1px solid #666
+
+.hidden
+  :display none
+
+.clearfix
+  +clearfix
+
+/*-------------------------------------------------------------------------
+/* Structure
+/*-------------------------------------------------------------------------
+.wrapper
+  :width $SITE_WIDTH
+  :margin 0 auto
+
+.Header
+  :background #F5F5F5
+  :border-bottom 10px solid #D9D9D9
+  :text-align right
+  .Logo
+    :float left
+    :margin 16px 0 0 10px
+
+.Content
+  :background $COLOR_SITE_BG
+  .wrapper
+    :border 1px solid $COLOR_SITE_BG
+    :background url(/img/content_bg.gif) repeat-x bottom
+    .padding
+      :padding $CONTENT_PADDING
+.ContentOverlap
+  :height $CONTENT_OVERLAP
+  :margin-bottom 20px
+  +border-radius(0 0 1em 1em)
+  :background url(/img/content_bg.gif) repeat-x bottom
+
+.Sidebar
+  $aside_border: 1px dotted #D9D9D9
+  :float right
+  :width $SIDEBAR_WIDTH
+  :margin -8em 0 1em 1em
+  :padding 1em 0 0 2em
+  :border-left $aside_border
+  SECTION
+    :padding 1em 0
+    :border-bottom $aside_border
+  H3
+    :margin 0 0 .4em
+
+.Footer
+  $footer_color: #FFF
+  :margin-top -$CONTENT_OVERLAP
+  :padding 0 0 30px
+  :background #A47740 url(/img/footer_bg.png) repeat-x top
+  * HTML &
+    :background-image none
+  :color $footer_color
+  A
+    :color $footer_color
+  H2
+    :margin-top 0
+    :color $footer_color
+  .info_block
+    :float left
+    :width $SITE_WIDTH/3
+    .padding
+      :padding 1em 2em
+      :border-right 1px solid lighten($COLOR_MAIN, 5%)
+    .first
+      :padding-left 0
+    .last
+      :padding-right 0
+      :border-right none
+
+/*-------------------------------------------------------------------------
+/* Navigation
+/*-------------------------------------------------------------------------
+.UtilNav, .MainNav, .SubNav
+  A
+    :text-transform uppercase
+    :text-decoration none
+    
+.UtilNav, .SubNav
+  :background $COLOR_MAIN
+  :font-size .9em
+  :padding .6em 0
+  A
+    :border-right 1px solid #FFF
+    :padding 0 1.2em
+    :color #FFF
+  LI.last A
+    :border-right none
+
+.SubNav
+  :display block
+  :padding 0
+  :background $COLOR_SITE_BG
+  :border-top 2px solid $COLOR_SITE_BG
+  .wrapper
+    :padding .6em
+    :background $COLOR_MAIN
+  A
+    :padding .4em 1.2em
+    :border none
+  LI
+    :margin-right 1px
+    &.selected A
+      :background #FFF
+      :color $COLOR_MAIN
+    A:HOVER
+      :background lighten($COLOR_MAIN, 10%)
+      :color #FFF
+
+.MainNav
+  :margin-top 60px
+  :padding 8px
+  :background #FFF
+  LI
+    :margin-right 1px
+    &.selected A
+      :background $COLOR_MAIN
+      :color #FFF
+    A:HOVER
+      :background darken(#D9D9D9, 20%)
+      :color #FFF
+    
+  A
+    :padding .8em 1em
+    :color #797979
+
+/*-------------------------------------------------------------------------
+/* Icons
+/*-------------------------------------------------------------------------
+.icon
+  :padding-left 18px
+  :background no-repeat left center
+
+/*-------------------------------------------------------------------------
+/* Buttons
+/*-------------------------------------------------------------------------
+.button, BUTTON
+  :padding .1em .4em
+  :border none
+  +border-radius(5px)
+  :line-height 1em
+  :background $COLOR_MAIN
+  :color #FFF
+  :font-weight normal
+  &:HOVER
+    :background lighten($COLOR_MAIN, 15%)
+  &:ACTIVE
+    :background darken($COLOR_MAIN, 15%)
+
+/*-------------------------------------------------------------------------
+/* Forms
+/*-------------------------------------------------------------------------
+INPUT, SELECT
+  :border 1px solid #CCC
+FORM
+  .field
+    :margin .4em 0
+    .inputs
+      :margin .4em 0
+
+/*-------------------------------------------------------------------------
+/* Components
+/*-------------------------------------------------------------------------
+.image_gallery
+  UL
+    :list-style none
+    :padding 0
+    :margin 1em 0
+    LI
+      :padding 0
+      :display inline
+  A.thumb
+    :margin 1em 3em 1em 0
+    :display inline-block
+    :padding 5px
+    :border 1px solid #E4E4E4
+    +border-radius(5px)
+    :line-height 1px
+    &:HOVER
+      :background desaturate(#487EBD, 20%)
+  .large_image
+    :display none
+
+/*-------------------------------------------------------------------------
+/* Components Instances
+/*-------------------------------------------------------------------------
+
+/*-------------------------------------------------------------------------
+/* Modal
+/*-------------------------------------------------------------------------
+#ModalOverlay
+  :background #000
+#Modal
+  :width auto
+  :height auto
+  :border 1px solid #FFF
+  :background #FFF
+  +border-radius(20px)
+  .loading
+    :margin-top 100px
+    :text-align center
+    :visibility hidden
+    :color $COLOR_MAIN
+    :font-size 1.1em
+    :font-weight bold
+    IMG
+    .text
+      :margin 1em 0 0
+  .controls
+    :margin-bottom 1em
+    :text-align right
+    A 
+      :text-decoration none
+      :color #666
+#ModalContent
+  :display none
+  :padding 2em

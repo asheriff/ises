@@ -1,0 +1,15 @@
+- @title = "Photo Gallery"
+
+%p= Faker::Lorem.paragraph(5)
+
+.image_gallery
+  %ul
+    - @gallery.each do |item|
+      %li
+        %a.thumb{ :href=>"#image_#{item.xid}", :rel=>:modal }
+          %img{ :src=>"#{item.thumb}" }<>
+        .large_image{ :id=>"image_#{item.xid}" }
+          .image
+            %img{ :src=>"#{item.large}" }
+          .description
+            %p= item.description
