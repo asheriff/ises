@@ -45,6 +45,12 @@ BODY
 
 IMG
   :border none
+  &.left
+    :float left
+    :margin 0 1em .5em 0
+  &.right
+    :float right
+    :margin 0 0 .5em 1em
 
 HEADER, SECTION, FOOTER, ASIDE
   :display block
@@ -81,14 +87,17 @@ A
 P, UL, OL, DL, H1, H2, H3, H4, H5, H6, TABLE, BLOCKQUOTE
   :margin 1.4em 0
   
+H1
+  :text-transform uppercase
 H1, H2
   :font-family $FONT_HEADINGS
-  :text-transform uppercase
   :color $COLOR_MAIN
 H1
   :font-size 2em
 H2
   :font-size 1.6em
+  .Footer &
+    :text-transform uppercase
 H3
   :font-size 1.5em
   :color $COLOR_MAIN
@@ -166,7 +175,7 @@ HR
   .info_block
     :float left
     :width $SITE_WIDTH/3
-    .padding
+    .pad
       :padding 1em 2em
       :border-right 1px solid lighten($COLOR_MAIN, 5%)
     .first
@@ -268,6 +277,9 @@ FORM
 /*-------------------------------------------------------------------------
 /* Components
 /*-------------------------------------------------------------------------
+.read_more
+  :white-space nowrap
+
 .image_gallery
   UL
     :list-style none
@@ -288,9 +300,31 @@ FORM
   .large_image
     :display none
 
+.grid
+  .item
+    :float left
+    :width ($SITE_WIDTH - 2*$CONTENT_PADDING) / 3 - 1px
+    H2
+      :margin-top 0
+    .pad
+      :padding 1em 2em
+    .first
+      :padding-left 0
+    .last
+      :padding-right 0
+  
 /*-------------------------------------------------------------------------
 /* Components Instances
 /*-------------------------------------------------------------------------
+.social_media_links
+  :list-style none
+  :margin 0
+  :padding 0
+  LI
+    :display inline
+    :margin-right 18px
+  A
+    :text-decoration none
 
 /*-------------------------------------------------------------------------
 /* Modal
@@ -322,3 +356,13 @@ FORM
 #ModalContent
   :display none
   :padding 2em
+
+/*-------------------------------------------------------------------------
+/* Modal
+/*-------------------------------------------------------------------------
+.placeholder
+  :height 100px
+  :padding 1em
+  :border 1px dashed #999
+  :color #999
+  :text-align center

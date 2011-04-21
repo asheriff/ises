@@ -1,6 +1,17 @@
 class MainController < Controller
+  def self.action_missing(path)
+    return if path == '/error_404'
+    try_resolve('/error_404')
+  end
+  
   def index
     @no_sidebar = true
+  end
+  
+  def error_404
+    @title = request.env["PATH_INFO"].gsub(%r(/(.))){ |s| s[1].upcase }
+    
+    Faker::Lorem.paragraph(30)
   end
   
   def members
